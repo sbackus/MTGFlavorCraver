@@ -1,4 +1,5 @@
-require "twitter"
+#!/usr/bin/env ruby
+require 'twitter'
 require 'json'
 
 # https://apps.twitter.com/app/7845439
@@ -9,21 +10,29 @@ client = Twitter::REST::Client.new do |config|
   config.access_token_secret = ENV["FLAVORCRAVER_ACCESS_TOKEN_SECRET"]
 end
 
-file = File.read('AllSets.json')
-all_sets = JSON.parse(file)
+def random_flavor
+  file = File.read('/Users/sambackus/Code/MTGFlavorCraver/AllSets.json')
+  all_sets = JSON.parse(file)
 
 
-number_of_sets = all_sets.keys.length
-random_set = all_sets.keys[rand(0...number_of_sets)]
-set = all_sets[random_set]["cards"]
-puts random_set
-puts set.length
+  number_of_sets = all_sets.keys.length
+  random_set = all_sets.keys[rand(0...number_of_sets)]
+  set = all_sets[random_set]["cards"]
+  puts random_set
+  puts set.length
 
-number_of_cards_in_set = set.length
-card = set[rand(0...number_of_cards_in_set)]
-flavor = card["flavor"]
-puts flavor
-if flavor && flavor.length < 140
-  client.update(flavor)
+  number_of_cards_in_set = set.length
+  card = set[rand(0...number_of_cards_in_set)]
+  puts card["name"]
+  flavor = card["flavor"]
+  puts flavor
+  return flavor
 end
 
+flavor = nil
+
+until  flavor && flavor.length < 140 do
+  flavor = random_flavor
+end
+
+client.update(flavor)
