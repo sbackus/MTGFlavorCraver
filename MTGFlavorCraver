@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-source /Users/sambackus/.bash_profile
+source /Users/sbackus/.bash_profile
 
 # set encoding
 export LANG=en_US.UTF-8
 
 # load rvm ruby
-source /Users/sambackus/.rvm/environments/ruby-2.1.1@MTGFlavorCraver
+source /Users/sbackus/.rvm/environments/ruby-2.1.1@MTGFlavorCraver
 
 bundle install
-ruby /Users/sambackus/Code/MTGFlavorCraver/MTGFlavorCraver.rb
+ruby /Users/sbackus/Code/MTGFlavorCraver/MTGFlavorCraver.rb

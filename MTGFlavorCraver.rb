@@ -11,9 +11,8 @@ client = Twitter::REST::Client.new do |config|
 end
 
 def random_flavor
-  file = File.read('/Users/sambackus/Code/MTGFlavorCraver/AllSets.json')
+  file = File.read('/Users/sbackus/Code/MTGFlavorCraver/AllSets.json')
   all_sets = JSON.parse(file)
-
 
   number_of_sets = all_sets.keys.length
   random_set = all_sets.keys[rand(0...number_of_sets)]
