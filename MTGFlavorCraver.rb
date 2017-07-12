@@ -17,14 +17,12 @@ def random_flavor(all_sets)
 
   number_of_cards_in_set = set.length
   card = set[rand(0...number_of_cards_in_set)]
-  puts card["name"]
   flavor = card["flavor"]
-  puts flavor
   return flavor
 end
 
 
-file = File.read('/Users/sambackus/Code/MTGFlavorCraver/AllSets.json')
+file = File.read('/Users/sbackus/Code/MTGFlavorCraver/AllSets.json')
 all_sets = JSON.parse(file)
 
 flavor = nil
